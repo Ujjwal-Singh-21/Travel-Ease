@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="assets/FavIcon.jpg" type="image/x-icon" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Remix Icon CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      *,
+      *::after,
+      *::before {
+        box-sizing: border-box;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        width: 100vw;
+        min-height: 100vh;
+        height: fit-content;
+      }
+
+      .center-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .wrapper {
+        width: 350px;
+        height: 400px;
+        background: transparent;
+        border: none;
+        transition: 0.3s;
+        border-radius: 20px;
+        background-color: #e1f3f3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+        position: relative;
+      }
+
+      .wrapper:hover {
+        box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .wrapper .form-box {
+        width: 100%;
+        padding: 40px;
+      }
+
+      .wrapper .icon-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 40px;
+        height: 40px;
+        font-size: 2.2rem;
+        background-color: #162938;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 17px;
+        cursor: pointer;
+        z-index: 1;
+      }
+
+      .wrapper .icon-close a {
+        color: #e1f3f3;
+      }
+
+      .wrapper .icon-close a:hover {
+        color: red;
+        font-weight: 700;
+      }
+
+      .form-box h2 {
+        font-size: 2rem;
+        color: #1d293d;
+        text-align: center;
+      }
+
+      .input-box {
+        position: relative;
+        width: 100%;
+        height: 50px;
+        border-bottom: 2px solid #1d293d;
+        margin: 30px 0;
+      }
+
+      .input-box label {
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        transform: translateY(-50);
+        font-size: 1rem;
+        color: #162938;
+        font-weight: 500;
+        transition: 0.5s;
+        /* pointer-events: none; */
+      }
+
+      .input-box input:focus ~ label,
+      .input-box input:valid ~ label {
+        top: -9px;
+      }
+
+      .input-box input {
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-size: 1rem;
+        color: #162938;
+        font-weight: 550;
+        padding: 0 35px 0 5px;
+      }
+
+      .input-box .icon {
+        position: absolute;
+        right: 8px;
+        font-size: 1.2rem;
+        color: #162938;
+        line-height: 57px;
+      }
+
+      .remember-forgot {
+        font-size: 0.9rem;
+        color: #162938;
+        font-weight: 500;
+        margin: -10px 0 15px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .remember-forgot label input {
+        accent-color: #162938;
+        margin-right: 5px;
+      }
+
+      .remember-forgot a {
+        color: #162938;
+      }
+
+      .remember-forgot a:hover {
+        text-decoration: underline;
+      }
+
+      .btn {
+        display: block;
+        margin: 1rem auto;
+      }
+
+      .login-register {
+        font-size: 0.9rem;
+        color: #162938;
+        text-align: center;
+        font-weight: 500;
+        margin: 25px 0 10px 0;
+      }
+
+      .login-register a {
+        color: #162938;
+        font-weight: 600;
+      }
+
+      .login-register a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NavBar Scetion -->
+    <nav>
+      <div class="nav__header">
+        <div class="nav__logo">
+          <a href="#">
+            <img src="assets/TravelEase_main_logo.jpg" alt="logo" />
+          </a>
+        </div>
+        <div class="nav__menu__btn" id="menu-btn">
+          <i class="ri-menu-3-fill"></i>
+        </div>
+      </div>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html">About</a></li>
+        <li><a href="index.html">Tour</a></li>
+        <li><a href="index.html">Contact</a></li>
+        <li>
+          <a href="register.html">
+            <button class="btn">
+              Register
+              <span><i class="ri-arrow-right-long-line"></i></span>
+            </button>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Login Page Begins From Here -->
+    <div class="center-container">
+      <div class="wrapper">
+        <span class="icon-close">
+          <a href="index.html"><i class="ri-close-line"></i></a
+        ></span>
+
+        <!-- Login Page -->
+        <div class="form-box login">
+          <h2>Login</h2>
+          <form action="login.jsp" method="post">
+            <div class="input-box">
+              <span class="icon"><i class="ri-mail-fill"></i></span>
+              <input type="email" id="input1" name="email" required />
+              <label for="input1">Email</label>
+            </div>
+            <div class="input-box">
+              <span class="icon"><i class="ri-lock-fill"></i></span>
+              <input type="password" id="input2" name="password" required />
+              <label for="input2">Password</label>
+            </div>
+            <div class="remember-forgot">
+              <label for="input3"
+                ><input type="checkbox" id="input3" />Remember me</label
+              >
+              <a href="#">Forgot Password?</a>
+            </div>
+            <button class="btn">Login</button>
+            <div class="login-register">
+              <p>
+                Don't have an account?
+                <a href="register.html" class="register-link">Register</a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

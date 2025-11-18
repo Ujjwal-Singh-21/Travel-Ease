@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jharkhand Travel Guide</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Josefin Sans", sans-serif;
+        background: linear-gradient(270deg, #00d2ff, #3a7bd5, #00d2ff);
+        background-size: 600% 600%;
+        animation: gradientBG 16s ease infinite;
+        color: #333;
+        line-height: 1.6;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.05) 20%,
+            transparent 20%
+          ),
+          radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.05) 20%,
+            transparent 20%
+          );
+        background-size: 40px 40px;
+        background-position: 0 0, 20px 20px;
+        animation: moveBg 20s linear infinite;
+        z-index: -1;
+      }
+
+      @keyframes moveBg {
+        0% {
+          background-position: 0 0, 20px 20px;
+        }
+        100% {
+          background-position: 40px 40px, 60px 60px;
+        }
+      }
+
+      @keyframes gradientBG {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100vw;
+        background-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        display: flex;
+        justify-content: center;
+        padding: 12px 0;
+        margin-left: 25px;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: #00796b;
+        font-weight: bold;
+        margin: 0 15px;
+        font-size: 1rem;
+        transition: 0.3s;
+      }
+
+      nav a:hover {
+        color: #004d40;
+        transform: scale(1.05);
+      }
+
+      h1 {
+        font-size: 3rem;
+        text-align: center;
+        margin: 120px 0 30px;
+        color: #ffffff;
+        text-shadow: 2px 2px 8px #000000aa;
+      }
+
+      .city-section {
+        background-color: rgba(255, 255, 255, 0.95);
+        margin: 50px 15px;
+        padding: 35px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        position: relative;
+        border: 3px solid transparent;
+        background-clip: padding-box;
+        animation: fadeIn 1s ease-in;
+      }
+
+      .city-section::before {
+        content: "";
+        position: absolute;
+        top: -3px;
+        left: -3px;
+        right: -3px;
+        bottom: -3px;
+        background: linear-gradient(45deg, #00d2ff, #3a7bd5, #00d2ff);
+        background-size: 400% 400%;
+        animation: borderGlow 8s ease infinite;
+        border-radius: 20px;
+        z-index: -1;
+      }
+
+      @keyframes borderGlow {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        margin-bottom: 25px;
+        text-align: center;
+        color: #00796b;
+        text-shadow: 1px 1px 4px #ccc;
+      }
+
+      .card {
+        background: #fdfdfdcc;
+        padding: 20px;
+        margin-bottom: 25px;
+        border-radius: 15px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+      }
+
+      .card h3 {
+        color: #004d40;
+        margin-bottom: 10px;
+        font-size: 1.5rem;
+      }
+
+      .card h4 {
+        color: #00695c;
+        font-weight: 600;
+        margin: 8px 0 4px;
+      }
+
+      .card p {
+        color: #333;
+        font-size: 1rem;
+      }
+
+      img,
+      iframe {
+        width: 100%;
+        max-height: 400px;
+        border-radius: 12px;
+        margin-top: 10px;
+        object-fit: cover;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2.2rem;
+        }
+
+        h2 {
+          font-size: 1.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="#ranchi">Ranchi</a>
+      <a href="#jamshedpur">Jamshedpur</a>
+      <a href="#deoghar">Deoghar</a>
+      <a href="#dhanbad">Dhanbad</a>
+      <a href="#bokaro">Bokaro</a>
+      <a href="dashboard.html">
+        <button class="btn">
+          Back
+          <span></span>
+        </button>
+      </a>
+    </nav>
+
+    <h1>Jharkhand Travel Guide</h1>
+    <div class="city-section" id="netarhat">
+      <h2>Netarhat</h2>
+      <div class="card">
+        <h3>Sunrise Point</h3>
+        <p>
+          Popular spot to watch the mesmerizing sunrise over the hills of
+          Netarhat.
+        </p>
+        <img
+          src="./images/netarhat-sunrise-point-2020538.webp"
+          alt="Sunrise Point Netarhat"
+        />
+        <iframe
+          src="https://www.google.com/maps?q=Sunrise+Point+Netarhat&output=embed"
+        ></iframe>
+      </div>
+      <div class="card">
+        <h3>Netarhat Dam</h3>
+        <p>
+          Beautiful serene dam surrounded by forest, ideal for quiet walks and
+          picnics.
+        </p>
+        <img
+          src="./images/netarhat-dam-ranchi-jharkhand-2-attr-hero.jpeg"
+          alt="Netarhat Dam"
+        />
+        <iframe
+          src="https://www.google.com/maps?q=Netarhat+Dam&output=embed"
+        ></iframe>
+      </div>
+      <div class="card">
+        <h3>Magnolia Point</h3>
+        <p>
+          Famous sunset point offering a stunning view of the valley and
+          changing sky colors.
+        </p>
+        <img
+          src="./images/magnolia-sunset-point.jpg"
+          alt="Magnolia Point Netarhat"
+        />
+        <iframe
+          src="https://www.google.com/maps?q=Magnolia+Point+Netarhat&output=embed"
+        ></iframe>
+      </div>
+      <div class="card">
+        <h3>Pine Forest</h3>
+        <p>
+          Enchanting pine forest trail, perfect for nature walks and
+          photography.
+        </p>
+        <img
+          src="./images/Netarhat-Pine-Forest-2.jpg"
+          alt="Pine Forest Netarhat"
+        />
+        <iframe
+          src="https://www.google.com/maps?q=Pine+Forest+Netarhat&output=embed"
+        ></iframe>
+      </div>
+      <div class="card">
+        <h3>Chalet House</h3>
+        <p>
+          Historic guest house built in colonial style, surrounded by lush
+          greenery.
+        </p>
+        <img src="./images/Chalet  (5).jpg" alt="Chalet House Netarhat" />
+        <iframe
+          src="https://www.google.com/maps?q=Chalet+House+Netarhat&output=embed"
+        ></iframe>
+      </div>
+      <div class="card">
+        <h3>Accommodation</h3>
+        <h4>Prabhat Vihar</h4>
+        <p>₹1500/night | 4.1⭐ | +91-94311-51234</p>
+        <h4>Forest Rest House</h4>
+        <p>₹1200/night | 4.0⭐ | +91-94313-67890</p>
+      </div>
+      <div class="card">
+        <h3>Local Cuisine</h3>
+        <p>Dhuska, Bamboo Shoot Curry, Rice with Forest Herbs</p>
+      </div>
+      <div class="card">
+        <h3>Transport</h3>
+        <p>
+          Rail: Lohardaga Station (110 km)<br />Air: Ranchi Airport (155 km)<br />Local:
+          Taxi, Jeep
+        </p>
+      </div>
+      <div class="card">
+        <h3>Temple Timings</h3>
+        <p>Koel View Point Temple: 6 AM – 7 PM</p>
+      </div>
+      <div class="card">
+        <h3>Emergency Contacts</h3>
+        <p>
+          Netarhat PHC: +91-94313-45678<br />Police: 100<br />Tourism Info:
+          1800-345-6543
+        </p>
+      </div>
+    </div>
+
+    <div class="city-section" id="ranchi">
+      <h2>Ranchi</h2>
+      <div class="card">
+        <h3>Patratu Valley</h3>
+        <p>
+          Scenic winding roads with valley views, a popular spot for
+          photographers and bikers.
+        </p>
+        <img src="./images/patratu.cms" alt="Patratu Valley" />
+        <iframe
+          src="https://www.google.com/maps?q=Patratu+Valley&output=embed"
+        ></iframe>
+      </div>
+      <div class="card">
+        <h3>Rock Garden</h3>
+        <p>
+          Garden built on rock formations with waterfalls and bridges, ideal for
+          leisure visits.
+        </p>
+        <img src="./images/rock-garden.jpg" alt="Rock Garden" />
+        <iframe
+          src="https://www.google.com/maps?q=Rock+Garden+Ranchi&output=embed"
+        ></iframe>
+      </div>
+      <div class="card">
+        <h3>Hundru Falls</h3>
+        <p>
+          One of the highest waterfalls in Jharkhand, set amid scenic
+          surroundings.
+        </p>
+        <img
+          src="./images/hudru-waterfall-jharkhand-hundru-falls-waterfall-located-ranchi-district-indian-state-jharkhand-122775833.webp"
+          alt="Hundru Falls"
+        />
+        <iframe
+          src="https://www.google.com/maps?q=Hundru+Falls+Ranchi&output=embed"
+        ></iframe>
+      </div>
+      <div class="card">
+        <h3>Accommodation</h3>
+        <h4>Radisson Blu Ranchi</h4>
+        <p>₹4000/night | 4.4⭐ | +91-651-6604888</p>
+        <h4>Hotel Green Horizon</h4>
+        <p>₹1800/night | 4.0⭐ | +91-651-2216235</p>
+      </div>
+      <div class="card">
+        <h3>Local Cuisine</h3>
+        <p>Rugra Curry, Bamboo Shoots, Dhuska, Litti Chokha</p>
+      </div>
+      <div class="card">
+        <h3>Transport</h3>
+        <p>
+          Rail: Ranchi Junction<br />Air: Birsa Munda Airport<br />Local: Auto,
+          Cabs
+        </p>
+      </div>
+      <div class="card">
+        <h3>Temple Timings</h3>
+        <p>Pahari Mandir: 5 AM – 8 PM</p>
+      </div>
+      <div class="card">
+        <h3>Emergency Contacts</h3>
+        <p>
+          RIMS Hospital: 0651-2541533<br />Police: 100<br />Tourism Info:
+          1800-345-6543
+        </p>
+      </div>
+    </div>
+
+    <div class="city-section" id="jamshedpur">
+      <h2>Jamshedpur</h2>
+      <div class="card">
+        <h3>Jubilee Park</h3>
+        <p>
+          Expansive urban park with fountains, gardens, and a zoo—gifted by Tata
+          Steel.
+        </p>
+        <img src="./images/jubilee-park.jpg" alt="Jubilee Park" />
+        <iframe
+          src="https://www.google.com/maps?q=Jubilee+Park+Jamshedpur&output=embed"
+        ></iframe>
+      </div>
+      <div class="card">
+        <h3>Dimna Lake</h3>
+        <p>
+          Artificial reservoir at the foot of Dalma Hills, ideal for boating and
+          picnics.
+        </p>
+        <img src="./images/Dimna_Lake,_Jamshedpur.jpg" alt="Dimna Lake" />
+        <iframe
+          src="https://www.google.com/maps?q=Dimna+Lake+Jamshedpur&output=embed"
+        ></iframe>
+      </div>
+      <div class="card">
+        <h3>Tata Steel Zoological Park</h3>
+        <p>Well-maintained zoo housing tigers, leopards, and a safari area.</p>
+        <img
+          src="./images/tata-steel-zoological-park-jamshedpur-jharkhand-2-attr-hero.jpeg"
+          alt="Tata Zoo"
+        />
+        <iframe
+          src="https://www.google.com/maps?q=Tata+Steel+Zoological+Park&output=embed"
+        ></iframe>
+      </div>
+      <div class="card">
+        <h3>Accommodation</h3>
+        <h4>Hotel JIVA</h4>
+        <p>₹3000/night | 4.3⭐ | +91-657-2323000</p>
+        <h4>Hotel Alcor</h4>
+        <p>₹2400/night | 4.1⭐ | +91-657-2223434</p>
+      </div>
+      <div class="card">
+        <h3>Local Cuisine</h3>
+        <p>Chilka Roti, Pitha, Bamboo Shoots, Sattu Drinks</p>
+      </div>
+      <div class="card">
+        <h3>Transport</h3>
+        <p>
+          Rail: Tatanagar Junction<br />Air: Birsa Munda Airport (150 km)<br />Local:
+          Auto, Buses
+        </p>
+      </div>
+      <div class="card">
+        <h3>Temple Timings</h3>
+        <p>Bhuvaneshwari Temple: 6 AM – 8 PM</p>
+      </div>
+      <div class="card">
+        <h3>Emergency Contacts</h3>
+        <p>
+          Tata Main Hospital: 0657-6644000<br />Police: 100<br />Tourism Info:
+          1800-345-6543
+        </p>
+      </div>
+    </div>
+
+    <!-- Existing Ranchi and Jamshedpur sections retained -->
+
+    <div class="city-section" id="deoghar">
+      <h2>Deoghar</h2>
+      <div class="card">
+        <h3>Baidyanath Temple</h3>
+        <p>
+          One of the 12 Jyotirlingas, this is a prominent temple dedicated to
+          Lord Shiva.
+        </p>
+        <img
+          src="./images/Deoghar-Baidyanath-Temple.jpeg"
+          alt="Baidyanath Temple"
+        />
+        <iframe
+          src="https://www.google.com/maps?q=Baidyanath+Temple+Deoghar&output=embed"
+        ></iframe>
+      </div>
+      <div class="card">
+        <h3>Nandan Pahar</h3>
+        <p>Hill park with a temple, swings, boating, and amusement for kids.</p>
+        <img src="./images/nandan pahad .jpg" alt="Nandan Pahar" />
+        <iframe
+          src="https://www.google.com/maps?q=Nandan+Pahar+Deoghar&output=embed"
+        ></iframe>
+      </div>
+      <div class="card">
+        <h3>Trikuta Parvat</h3>
+        <p>Hilltop spot with ropeway and panoramic views of Deoghar region.</p>
+        <img src="./images/trikuta-deoghar.jpeg" alt="Trikuta Hills" />
+        <iframe
+          src="https://www.google.com/maps?q=Trikuta+Hills+Deoghar&output=embed"
+        ></iframe>
+      </div>
+      <div class="card">
+        <h3>Accommodation</h3>
+        <h4>Hotel Amrapali Clarks Inn</h4>
+        <p>₹2400/night | 4.2⭐ | +91-6432-232400</p>
+        <h4>Hotel Yatrik</h4>
+        <p>₹1100/night | 4.0⭐ | +91-6432-231312</p>
+      </div>
+      <div class="card">
+        <h3>Local Cuisine</h3>
+        <p>Khichdi, Thekua, Chana Ghugni, Tilkut (sweet)</p>
+      </div>
+      <div class="card">
+        <h3>Transport</h3>
+        <p>
+          Rail: Jasidih Junction<br />Air: Deoghar Airport<br />Local:
+          E-Rickshaw, Auto
+        </p>
+      </div>
+      <div class="card">
+        <h3>Temple Timings</h3>
+        <p>4 AM – 9 PM | Shringar Aarti, Sandhya Aarti</p>
+      </div>
+      <div class="card">
+        <h3>Emergency Contacts</h3>
+        <p>
+          Hospital: 06432-232233<br />Police: 100<br />Tourism Help:
+          1800-345-6543
+        </p>
+      </div>
+    </div>
+
+    <div class="city-section" id="dhanbad">
+      <h2>Dhanbad</h2>
+      <div class="card">
+        <h3>Maithon Dam</h3>
+        <p>
+          Picturesque dam across Barakar river, ideal for boating and picnics.
+        </p>
+        <img src="./images/maithon dam.jpg" alt="Maithon Dam" />
+        <iframe
+          src="https://www.google.com/maps?q=Maithon+Dam+Dhanbad&output=embed"
+        ></iframe>
+      </div>
+      <div class="card">
+        <h3>Birsa Munda Park</h3>
+        <p>
+          Urban park with greenery, pathways, and relaxing environment for
+          families.
+        </p>
+        <img src="./images/birsamunda .jpg" alt="Birsa Munda Park" />
+        <iframe
+          src="https://www.google.com/maps?q=Birsa+Munda+Park+Dhanbad&output=embed"
+        ></iframe>
+      </div>
+      <div class="card">
+        <h3>Topchanchi Lake</h3>
+        <p>
+          Natural reservoir surrounded by forested hills, popular for peaceful
+          visits.
+        </p>
+        <img src="./images/topchanchi-lake.jpg" alt="Topchanchi Lake" />
+        <iframe
+          src="https://www.google.com/maps?q=Topchanchi+Lake&output=embed"
+        ></iframe>
+      </div>
+      <div class="card">
+        <h3>Accommodation</h3>
+        <h4>Hotel Cocoon</h4>
+        <p>₹2600/night | 4.3⭐ | +91-326-2313151</p>
+        <h4>Hotel Kuber</h4>
+        <p>₹1400/night | 4.0⭐ | +91-326-2201421</p>
+      </div>
+      <div class="card">
+        <h3>Local Cuisine</h3>
+        <p>Sattu Paratha, Aloo Bharta, Jharkhandi Mutton Curry</p>
+      </div>
+      <div class="card">
+        <h3>Transport</h3>
+        <p>
+          Rail: Dhanbad Junction<br />Air: Ranchi Airport (150 km)<br />Local:
+          Auto, Rickshaw
+        </p>
+      </div>
+      <div class="card">
+        <h3>Temple Timings</h3>
+        <p>Shakti Mandir: 6 AM – 8 PM</p>
+      </div>
+      <div class="card">
+        <h3>Emergency Contacts</h3>
+        <p>
+          SNMMCH Hospital: 0326-2223333<br />Police: 100<br />Tourism Info:
+          1800-345-6543
+        </p>
+      </div>
+    </div>
+
+    <div class="city-section" id="bokaro">
+      <h2>Bokaro</h2>
+      <div class="card">
+        <h3>City Park</h3>
+        <p>
+          Large urban park with lake, boating, musical fountains, and flower
+          gardens.
+        </p>
+        <img src="./images/city park.jpg" alt="City Park Bokaro" />
+        <iframe
+          src="https://www.google.com/maps?q=City+Park+Bokaro&output=embed"
+        ></iframe>
+      </div>
+      <div class="card">
+        <h3>Jagannath Temple</h3>
+        <p>
+          Replica of Puri Jagannath Temple located on top of a hill in Bokaro.
+        </p>
+        <img src="./images/jagganath.jpg" alt="Jagannath Temple Bokaro" />
+        <iframe
+          src="https://www.google.com/maps?q=Jagannath+Temple+Bokaro&output=embed"
+        ></iframe>
+      </div>
+
+      <div class="card">
+        <h3>Accommodation</h3>
+        <h4>Hotel Hans Regency</h4>
+        <p>₹2200/night | 4.2⭐ | +91-6542-230456</p>
+        <h4>Hotel Reliance</h4>
+        <p>₹1000/night | 4.0⭐ | +91-6542-222980</p>
+      </div>
+      <div class="card">
+        <h3>Local Cuisine</h3>
+        <p>Dal Pitha, Bamboo Shoot Curry, Aloo Chokha</p>
+      </div>
+      <div class="card">
+        <h3>Transport</h3>
+        <p>
+          Rail: Bokaro Steel City<br />Air: Ranchi Airport (125 km)<br />Local:
+          Bus, Auto
+        </p>
+      </div>
+      <div class="card">
+        <h3>Temple Timings</h3>
+        <p>6 AM – 9 PM | Jagannath Temple hill</p>
+      </div>
+      <div class="card">
+        <h3>Emergency Contacts</h3>
+        <p>
+          General Hospital: 06542-240567<br />Police: 100<br />Tourism Info:
+          1800-345-6543
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
